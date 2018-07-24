@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mensagens</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="is_online" (click)="openWebpage('http://www.twitch.tv/gratis150ml')">        
+        <ion-icon float-left ios="ios-checkmark-circle" md="md-checkmark-circle" color="secondary" style="zoom:1.5;"></ion-icon>
+      </button>
+      <button ion-button icon-only *ngIf="!is_online">        
+        <ion-icon float-left  ios="ios-close-circle" md="md-close-circle" color="danger" style="zoom:1.5;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>  
+<ion-content>  
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let m of msgs">
+    <img src="assets/imgs/rede_sociais/facebook.jpg" class="img-responsive " style=" width: 100% !important;height: auto !important;min-height: 150px;max-height: 170px;"/>
+    <ion-card-content>
+      <ion-icon float-left ios="ios-flame" md="md-flame" *ngIf="m.on_fire" color="danger" style="zoom:3.0;"></ion-icon>  
+      <ion-icon float-right ios="ios-heart" md="md-heart" [class.onLike]="m.curtido" [class.onNoLike]="!m.curtido" color="light" style="zoom:3.0;" (click)="curtir(m)"></ion-icon>  
+      <ion-card-title text-center  >{{m.descricao}}</ion-card-title>
+      <ion-item style="padding-left: 0px" >
+          <ion-label color="dark">Data do Evento: </ion-label>
+          <ion-datetime  type="text" [(ngModel)]="m.data_evento" displayFormat="DD/MMM/YYYY - HH:mm" [disabled]="true"></ion-datetime> 
+      </ion-item> 
+      </ion-card-content>
+  </ion-card> 
+</ion-content>
+  

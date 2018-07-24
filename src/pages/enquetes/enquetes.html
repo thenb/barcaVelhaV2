@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Enquetes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="is_online" (click)="openWebpage('http://www.twitch.tv/gratis150ml')">        
+        <ion-icon float-left ios="ios-checkmark-circle" md="md-checkmark-circle" color="secondary" style="zoom:1.5;"></ion-icon>
+      </button>
+      <button ion-button icon-only *ngIf="!is_online">        
+        <ion-icon float-left  ios="ios-close-circle" md="md-close-circle" color="danger" style="zoom:1.5;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>  
+<ion-content>  
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+    <ion-card *ngFor="let m of enquetes">
+        <img src="assets/imgs/rede_sociais/facebook.jpg" class="img-responsive " style=" width: 100% !important;height: auto !important;min-height: 150px;max-height: 170px;"/>
+    <ion-card-content>
+          <ion-card-title>{{m.descricao}}</ion-card-title>
+          <ion-item style="padding-left: 0px">
+            <ion-label>Enquete Finaliza: </ion-label>
+            <ion-datetime type="text" [(ngModel)]="m.data_fim" displayFormat="DD/MMM/YYYY - HH:mm" [disabled]="true"></ion-datetime> 
+          </ion-item>
+          <ion-list radio-group [(ngModel)]="m.resposta"> 
+            <ion-item style="padding-left: 0px" *ngIf="m.opcao_1!=null && m.opcao_1!='' && m.opcao_1!='undefined' && m.opcao_1!='null'" >
+              <ion-label>{{m.opcao_1}}</ion-label>
+              <ion-radio value="1" [disabled]="m.respondido"></ion-radio>
+            </ion-item>          
+            <ion-item style="padding-left: 0px" *ngIf="m.opcao_2!=null && m.opcao_2!='' && m.opcao_2!='undefined' && m.opcao_2!='null'">
+              <ion-label>{{m.opcao_2}}</ion-label>
+              <ion-radio value="2" [disabled]="m.respondido"></ion-radio>
+            </ion-item>          
+            <ion-item style="padding-left: 0px" *ngIf="m.opcao_3!=null && m.opcao_3!='' && m.opcao_3!='undefined' && m.opcao_3!='null'">
+              <ion-label>{{m.opcao_3}}</ion-label>
+              <ion-radio value="3" [disabled]="m.respondido"></ion-radio>
+            </ion-item>
+            <ion-item style="padding-left: 0px" *ngIf="m.opcao_4!=null && m.opcao_4!='' && m.opcao_4!='undefined' && m.opcao_4!='null'">
+              <ion-label>{{m.opcao_4}}</ion-label>
+              <ion-radio value="4" [disabled]="m.respondido"></ion-radio>
+            </ion-item>  
+          </ion-list>
+          <button ion-button block color="dark" (click)="votar(m)" [disabled]="m.respondido">Votar</button>
+        </ion-card-content>
+      </ion-card> 
+</ion-content>

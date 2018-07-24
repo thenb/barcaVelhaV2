@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Redes Sociais</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="is_online" (click)="openWebpage('http://www.twitch.tv/gratis150ml')">        
+        <ion-icon float-left ios="ios-checkmark-circle" md="md-checkmark-circle" color="secondary" style="zoom:1.5;"></ion-icon>
+      </button>
+      <button ion-button icon-only *ngIf="!is_online">        
+        <ion-icon float-left  ios="ios-close-circle" md="md-close-circle" color="danger" style="zoom:1.5;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content> 
+  
+    <!--<button ion-button color="dark" style="height: 50px" (click)="uivar()" block>Uivo</button>-->
+
+    <ion-card (click)="openWebpage('http://www.twitch.tv/gratis150ml')">
+      <img src="assets/imgs/rede_sociais/twitch.png" class="img-responsive " style=" width: 100% !important;height: auto !important;min-height: 150px;max-height: 150px;"/>
+      <ion-card-content>
+        <ion-card-title style="border-top: 1px solid lightslategray;">Twitch</ion-card-title>      
+      </ion-card-content>
+    </ion-card>  
+    <ion-card (click)="openWebpage('https://www.youtube.com/channel/UCrx4qFAvkAsZNxHPNy3pVpA')">
+      <img src="assets/imgs/rede_sociais/youtube.jpg" class="img-responsive " style=" width: 100% !important;height: auto !important;min-height: 150px;max-height: 150px;"/>
+      <ion-card-content>
+        <ion-card-title style="border-top: 1px solid lightslategray;">Youtube</ion-card-title>      
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="openWebpage('http://www.instagram.com/gratis150ml')">
+      <img src="assets/imgs/rede_sociais/instagram.jpg" class="img-responsive" style=" width: 100% !important;height: auto !important;min-height: 150px;max-height: 150px;"/>
+      <ion-card-content>
+        <ion-card-title style="border-top: 1px solid lightslategray;">Instagram</ion-card-title>      
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="openWebpage('http://www.facebook.com/gratis150ml')">
+      <img src="assets/imgs/rede_sociais/facebook.jpg" class="img-responsive " style=" width: 100% !important;height: auto !important;min-height: 150px;max-height: 150px;"/>
+      <ion-card-content>
+        <ion-card-title style="border-top: 1px solid lightslategray;">Facebook</ion-card-title>        
+      </ion-card-content>
+    </ion-card>  
+  <ion-card (click)="openWebpage('http://www.twitter.com/gratis150pdl')">
+    <img src="assets/imgs/rede_sociais/twitter.jpg" class="img-responsive " style=" width: 100% !important;height: auto !important;min-height: 150px;max-height: 150px;"/>
+    <ion-card-content>
+      <ion-card-title style="border-top: 1px solid lightslategray;">Twitter</ion-card-title>      
+    </ion-card-content>
+  </ion-card>
+</ion-content>

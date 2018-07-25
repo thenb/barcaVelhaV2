@@ -19,6 +19,7 @@ export class MyApp {
   //Essa linha ativa o login do auth0
   //rootPage: any = 'LoginPage';
   rootPage: any = 'MenuPage';
+  
   token_firebase: any;
 
   constructor(public platform: Platform,

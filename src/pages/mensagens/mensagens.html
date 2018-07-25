@@ -22,7 +22,7 @@
     <img src="assets/imgs/rede_sociais/facebook.jpg" class="img-responsive " style=" width: 100% !important;height: auto !important;min-height: 150px;max-height: 170px;"/>
     <ion-card-content>
       <ion-icon float-left ios="ios-flame" md="md-flame" *ngIf="m.on_fire" color="danger" style="zoom:3.0;"></ion-icon>  
-      <ion-icon float-right ios="ios-heart" md="md-heart" [class.onLike]="m.curtido" [class.onNoLike]="!m.curtido" color="light" style="zoom:3.0;" (click)="curtir(m)"></ion-icon>  
+      <ion-icon float-right ios="ios-heart" md="md-heart" [class.onLike]="m.curtido" [class.onNoLike]="!m.curtido" color="light" style="zoom:3.0;" (click)="curtir(m)"> {{m.qtd_curtidas}} </ion-icon>  
       <ion-card-title text-center  >{{m.descricao}}</ion-card-title>
       <ion-item style="padding-left: 0px" >
           <ion-label color="dark">Data do Evento: </ion-label>

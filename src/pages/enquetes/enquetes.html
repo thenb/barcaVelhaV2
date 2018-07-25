@@ -28,20 +28,24 @@
           </ion-item>
           <ion-list radio-group [(ngModel)]="m.resposta"> 
             <ion-item style="padding-left: 0px" *ngIf="m.opcao_1!=null && m.opcao_1!='' && m.opcao_1!='undefined' && m.opcao_1!='null'" >
-              <ion-label>{{m.opcao_1}}</ion-label>
+              <ion-label>{{m.opcao_1}} </ion-label>
               <ion-radio value="1" [disabled]="m.respondido"></ion-radio>
+              <ion-label float-right >{{m.opcao_1_qtd}}</ion-label>  
             </ion-item>          
             <ion-item style="padding-left: 0px" *ngIf="m.opcao_2!=null && m.opcao_2!='' && m.opcao_2!='undefined' && m.opcao_2!='null'">
-              <ion-label>{{m.opcao_2}}</ion-label>
+              <ion-label>{{m.opcao_2}} </ion-label>
               <ion-radio value="2" [disabled]="m.respondido"></ion-radio>
+              <ion-label float-right ></ion-label>{{m.opcao_2_qtd}}</ion-label>  
             </ion-item>          
             <ion-item style="padding-left: 0px" *ngIf="m.opcao_3!=null && m.opcao_3!='' && m.opcao_3!='undefined' && m.opcao_3!='null'">
               <ion-label>{{m.opcao_3}}</ion-label>
               <ion-radio value="3" [disabled]="m.respondido"></ion-radio>
+              <ion-label float-right >{{m.opcao_3_qtd}}</ion-label>  
             </ion-item>
             <ion-item style="padding-left: 0px" *ngIf="m.opcao_4!=null && m.opcao_4!='' && m.opcao_4!='undefined' && m.opcao_4!='null'">
               <ion-label>{{m.opcao_4}}</ion-label>
               <ion-radio value="4" [disabled]="m.respondido"></ion-radio>
+              <ion-label float-right >{{m.opcao_4_qtd}}</ion-label>              
             </ion-item>  
           </ion-list>
           <button ion-button block color="dark" (click)="votar(m)" [disabled]="m.respondido">Votar</button>

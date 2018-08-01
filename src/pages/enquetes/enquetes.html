@@ -24,7 +24,8 @@
       <ion-card-title>{{m.descricao}}</ion-card-title>
       <ion-item  style="padding-left: 0px">
         <ion-label>Enquete Finaliza: </ion-label>
-        <ion-datetime type="text" [(ngModel)]="m.data_fim" displayFormat="DD/MMM/YYYY - HH:mm" [disabled]="true"></ion-datetime> 
+        <ion-datetime *ngIf="m.valido" type="text" [(ngModel)]="m.data_fim" displayFormat="DD/MMM/YYYY - HH:mm" style="color: green" [disabled]="true"></ion-datetime> 
+        <ion-datetime *ngIf="!m.valido" type="text" [(ngModel)]="m.data_fim" displayFormat="DD/MMM/YYYY - HH:mm" style="color: red" [disabled]="true"></ion-datetime> 
       </ion-item>
       <ion-list radio-group [(ngModel)]="m.resposta"> 
         <ion-grid>
@@ -32,7 +33,7 @@
             <ion-col col-9> 
               <ion-item style="padding-left: 0px">
                 <ion-label>{{m.opcao_1}} </ion-label>
-                <ion-radio value="1" [disabled]="m.respondido"></ion-radio>
+                <ion-radio value="1" [disabled]="m.respondido || !m.valido"></ion-radio>
               </ion-item>    
             </ion-col>
             <ion-col col-3>
@@ -43,7 +44,7 @@
             <ion-col col-9> 
               <ion-item style="padding-left: 0px">
                 <ion-label>{{m.opcao_2}} </ion-label>
-                <ion-radio value="2" [disabled]="m.respondido"></ion-radio>
+                <ion-radio value="2" [disabled]="m.respondido || !m.valido"></ion-radio>
               </ion-item>    
             </ion-col>
             <ion-col col-3>
@@ -54,7 +55,7 @@
             <ion-col col-9> 
               <ion-item style="padding-left: 0px">
                 <ion-label>{{m.opcao_3}}</ion-label>
-                <ion-radio value="3" [disabled]="m.respondido"></ion-radio>
+                <ion-radio value="3" [disabled]="m.respondido || !m.valido"></ion-radio>
               </ion-item>    
             </ion-col>
             <ion-col col-3>
@@ -65,7 +66,7 @@
             <ion-col col-9> 
               <ion-item style="padding-left: 0px">
                 <ion-label>{{m.opcao_4}}</ion-label>
-                <ion-radio value="4" [disabled]="m.respondido"></ion-radio>
+                <ion-radio value="4" [disabled]="m.respondido || !m.valido"></ion-radio>
               </ion-item>    
             </ion-col>
             <ion-col col-3>
@@ -74,7 +75,7 @@
           </ion-row>                
         </ion-grid>
       </ion-list>
-      <button ion-button block color="dark" (click)="votar(m)" [disabled]="m.respondido">Votar</button>
+      <button ion-button block color="dark" (click)="votar(m)" [disabled]="m.respondido || !m.valido">Votar</button>
     </ion-card-content>
   </ion-card> 
 </ion-content>

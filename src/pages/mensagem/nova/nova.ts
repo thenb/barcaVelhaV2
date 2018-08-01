@@ -25,12 +25,14 @@ export class NovaPage {
   private descricao: string;
   private data: DateTime;
   private on_fire: boolean;
+  private is_hidden : boolean;
 
   constructor(public navCtrl: NavController,  public navParams: NavParams, 
     private http: HttpClient,  public loadingController: LoadingController,
     private toastCtrl: ToastController,  private formBuilder: FormBuilder,
      private utilsProvider: UtilsProvider) 
     {
+      this.is_hidden = false;
       this.mensagem = this.formBuilder.group({
         on_fire : [false],
         data_evento: ['', Validators.required],

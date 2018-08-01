@@ -56,6 +56,7 @@ export class EnquetesPage {
     })
     .toPromise().then(data => {
       this.enquetes = data;
+      this.checkDatetime();
       loader.dismiss();
     }).catch(error => {
       console.log(error.status);
@@ -107,11 +108,25 @@ export class EnquetesPage {
    }
 
   doRefresh(refresher) {
-  console.log('Begin async operation', refresher);
-  this.getAllEnquetes();
-  setTimeout(() => {
-    console.log('Async operation has ended');
-    refresher.complete();
-  }, 1000);
-}
+    console.log('Begin async operation', refresher);
+    this.getAllEnquetes();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 1000);
+  }
+
+  checkDatetime(){
+    let currentTime = new Date();
+    console.log("currentTime: " + currentTime);
+    for(let enquete of this.enquetes){
+      let dataFim = new Date(enquete.data_fim);
+      console.log("dataFim: " + dataFim);
+      if(currentTime > dataFim){
+        enquete.valido = false;
+      }else{
+       enquete.valido = true;
+      }
+    }
+  }
 }
